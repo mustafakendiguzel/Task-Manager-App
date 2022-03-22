@@ -12,5 +12,12 @@ app.get('/hello' ,(req, res, next) => {
 })
 
 app.use('/tasks',tasks)
-  
-app.listen(port,console.log(`Listening on port ${port}`))
+
+const start = async () => {
+  try {
+    await connectDB();
+    app.listen(port,console.log(`Listening on port ${port}`))
+  }
+  catch (err) {}
+}
+
